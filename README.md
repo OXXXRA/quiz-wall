@@ -1,4 +1,4 @@
 # SuperCoolQuiz
 
 
-Current project is dangerous. Вo not try this at home
+Current project is dangerous. Do not try this at home
