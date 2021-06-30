@@ -1,10 +1,39 @@
-version: '3.0'
+version: "3"
 
 services:
-
   nginx:
-    image: nginx
+    build: ./nginx
     ports:
       - 80:80
+    depends_on:
+      - postgres
+      - spa
+
+  postgres:
+    image: postgres:13.1
+    command: postgres -c 'max_connections=500'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+      TZ: "Europe/Moscow"
     volumes:
-      - ./html:/usr/share/nginx/html
+      - ${POSTGRES_VOLUME}:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+
+  # TODO Refresh next app without crashing
+  spa:
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    build:
+      context: ./spa
+    volumes:
+      - ./nuxt-spa:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+volumes:
+  quiz_db_volume:
+    external: true
