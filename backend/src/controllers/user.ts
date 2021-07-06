@@ -17,3 +17,25 @@ exports.getAll = (req: Request, res: Response) => {
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(err))
 };
+exports.get = (req: Request, res: Response) => {
+  const id = req.params.id;
+  User.findByPk(id)
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(500).json(err))
+};
+exports.deleteUser = (req: Request, res: Response) => {
+  const id = req.params.id;
+  User.destroy({
+    where: {id: id},
+  })
+    .then(() => res.status(200).json('Запись успешно удалена'))
+    .catch(err => res.status(500).json(err)) 
+}
+exports.putUser = (req: Request, res: Response) => {
+  const id = req.params.id;
+  User.update(req.body, {
+    where: {id: id},
+  })
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(500).json(err))
+}
