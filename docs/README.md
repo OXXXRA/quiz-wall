@@ -1,3 +1,3 @@
 # Документация
 
-## [SPA](https://github.com/OXXXRA/SuperCoolQuiz/docs/spa)
+## [SPA](https://github.com/OXXXRA/SuperCoolQuiz/tree/master/docs/spa)
