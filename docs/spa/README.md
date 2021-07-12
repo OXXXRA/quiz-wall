@@ -1,3 +1,3 @@
-# Документация
+# SPA
 
-## [SPA](https://github.com/OXXXRA/SuperCoolQuiz/docs/spa)
+## [Иконки (feathericons)](https://feathericons.com/)
