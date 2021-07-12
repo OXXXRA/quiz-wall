@@ -1,15 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,800;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,800;1,400&display=swap");
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 body {
-  
   background: linear-gradient(45deg, #f010005f, #9bff0f67);
-
 }
+
 .container {
   padding: 0 calc(50% - 590px);
 }
@@ -23,12 +22,22 @@ a {
   box-sizing: border-box;
 }
 
-.mb-1{
+.mb-1 {
   margin-bottom: 10px;
 }
-.p-1{
+
+.p-1 {
   padding: 10px;
 }
-.d-flex{
+
+.d-flex {
   display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
