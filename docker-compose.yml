@@ -21,8 +21,15 @@ services:
       - ${POSTGRES_VOLUME}:/var/lib/postgresql/data
     ports:
       - 5432:5432
-
-
+  redis:
+    image: redis
+    container_name: 'redis-server'
+    restart: unless-stopped
+    ports:
+        - "6379:6379"
+    volumes:
+        - /Users/mac/Desktop/trash/docker/super_cool_quiz
+    command: [ "redis-server" ]
   # TODO Refresh next app without crashing
   spa:
     restart: unless-stopped
