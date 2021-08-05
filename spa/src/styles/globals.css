@@ -5,8 +5,9 @@ body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
 }
+
 body {
-  background: linear-gradient(45deg, #f010005f, #9bff0f67);
+  background: #fbfbfd;
 }
 
 .container {
