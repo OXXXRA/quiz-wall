@@ -1,13 +1,13 @@
-const userApp = (app:any) =>  {
-  const userController = require('../controllers/user');
-  const router = require('express').Router();
+import { Router } from "express";
+const userController = require("../controllers/user");
 
-  router.post('/', userController.create);
-  router.get('/', userController.getAll);
-  router.get('/:id', userController.get)
-  router.put('/:id', userController.putUser)
-  router.delete('/:id', userController.deleteUser)
-  app.use('/users', router);
-};
+const router = Router();
 
-module.exports = userApp;
+router.get("/", userController.getAll);
+router.get("/:id", userController.get);
+
+router.post("/", userController.create);
+router.put("/:id", userController.putUser);
+router.delete("/:id", userController.deleteUser);
+
+export default router;

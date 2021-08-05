@@ -1,5 +1,5 @@
-import { DataTypes, Sequelize } from 'sequelize';
-import { UserStatic } from './_types';
+import { DataTypes, Sequelize } from "sequelize";
+import { UserStatic } from "./_types";
 
 export function UserFactory(sequelize: Sequelize): UserStatic {
   return <UserStatic>sequelize.define("users", {

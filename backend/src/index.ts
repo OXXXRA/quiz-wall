@@ -1,34 +1,25 @@
-import express, { Request, Response } from 'express';
-import sequelize from './config/sequelize';
-import bodyParser from 'body-parser';
+import express from "express";
+import config from "./config";
+import sequelize from "./config/sequelize";
+import userRoutes from "./routes/user";
+
 const app = express();
-app.use(bodyParser.json());
-const port = process.env.PORT || 3030;
 
+app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.status(200).json({ msg: 'Good!' });
-});
-
-require("./routes/user")(app);
+app.use("/users", userRoutes);
 
 async function main() {
-
-  // CONNECT TO DB
   try {
-    await sequelize.authenticate()
-    console.log('Connection has been established successfully.')
-    sequelize.sync()
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+    sequelize.sync();
   } catch (error) {
-    console.error('Unable to connect to the database:', error)
-
+    console.error("Unable to connect to the database:", error);
   }
-
-  app.listen(port, () => {
-    console.log(`Server start on: localhost:${port}`);
+  app.listen(config.PORT, () => {
+    console.log(`Server start on: localhost:${config.PORT}`);
   });
 }
 
-
-
-main()
+main();
