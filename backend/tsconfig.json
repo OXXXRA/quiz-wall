@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
     "module": "commonjs",
-    "rootDir": "./",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "sourceMap": true,
     "outDir": "./dist",
-    "esModuleInterop": true,
-    "strict": true,
-    "typeRoots" : ["./src/types", "./node_modules/@types"]
-  }
+    "baseUrl": "./",
+    "incremental": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true
+  },
+  "exclude": ["node_modules", "dist"]
 }
