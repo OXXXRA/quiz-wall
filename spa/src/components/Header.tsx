@@ -1,36 +1,64 @@
-import React from 'react';
-import { LogOut, Plus, FileText } from 'react-feather';
-import styled from 'styled-components';
-import { Button } from '../ui';
-import Link from './Link';
+import React from "react";
+import { LogOut, Plus } from "react-feather";
+import styled from "styled-components";
+import { Button, Input } from "../ui";
+import Link from "./Link";
 
 const StyledHeader = styled.div`
-	width: 100%;
-	height: min-content;
-	padding: 10px;
-	background-color: grey;
+  width: 100%;
+  height: min-content;
+  padding: 10px 0;
+
+  box-shadow: 1px 1px 3px #747474;
+  background: #729dfe;
+  position: sticky;
+  top: 0;
+
+  font-size: 20px;
+`;
+
+const Logo = styled(Link)`
+  margin-right: auto;
+  font-weight: bold;
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+`;
+
+const HeaderButton = styled(Button)`
+  padding: 5px;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+`;
+
+const SearchInput = styled(Input)`
+  flex: 0 0 1;
+  margin: 0 20px;
+  padding: 5px 10px;
 `;
 
 const Header = () => {
-	return (
-		<StyledHeader>
-			<div className="container  d-flex">
-				<Link href="/quiz/create" style={{ marginRight: 'auto' }}>
-					<Button width="60px" height="60px">
-						<Plus />
-					</Button>
-				</Link>
-				<Link href="/quiz/list" style={{ marginRight: 'auto' }}>
-					<Button width="60px" height="60px">
-						<FileText />
-					</Button>
-				</Link>
-				<Button width="60px" height="60px">
-					<LogOut />
-				</Button>
-			</div>
-		</StyledHeader>
-	);
+  return (
+    <StyledHeader>
+      <div className="container  d-flex">
+        <Logo href="/quiz/list">QUIZ</Logo>
+        <SearchInput placeholder="Поиск" />
+        <div className="d-flex">
+          <HeaderButton className="mr-1" color="transparent">
+            <LogOut />
+          </HeaderButton>
+          <Link href="/quiz/create" style={{ marginRight: "auto" }}>
+            <HeaderButton color="#2AE78D">
+              <Plus />
+            </HeaderButton>
+          </Link>
+        </div>
+      </div>
+    </StyledHeader>
+  );
 };
 
 export default Header;

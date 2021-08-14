@@ -11,7 +11,11 @@ body {
 }
 
 .container {
-  padding: 0 calc(50% - 590px);
+  margin: 0 auto;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  max-width: 1280px;
 }
 
 a {
@@ -29,6 +33,10 @@ a {
 
 .p-1 {
   padding: 10px;
+}
+
+.mr-1 {
+  margin-right: 10px;
 }
 
 .d-flex {
