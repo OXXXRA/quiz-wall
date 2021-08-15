@@ -14,7 +14,9 @@ export const databaseProviders = [
         }
       });
 
-      return mongoose.connect('mongodb://localhost/nest', {
+      return mongoose.connect(`mongodb://localhost:27017/${'quiz'}`, {
+        // pass: 'root',
+        // user: 'root',
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: true
