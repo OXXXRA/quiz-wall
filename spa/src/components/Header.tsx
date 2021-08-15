@@ -19,6 +19,7 @@ const StyledHeader = styled.div`
 
 const Logo = styled(Link)`
   margin-right: auto;
+
   font-weight: bold;
   color: white;
   font-size: 1.5rem;
@@ -44,10 +45,15 @@ const Header = () => {
   return (
     <StyledHeader>
       <div className="container  d-flex">
-        <Logo href="/quiz/list">QUIZ</Logo>
+        <Logo href="/">QUIZ</Logo>
         <SearchInput placeholder="Поиск" />
         <div className="d-flex">
-          <HeaderButton className="mr-1" color="transparent">
+          <HeaderButton
+            tag={Link}
+            href="/login"
+            className="mr-1"
+            color="transparent"
+          >
             <LogOut />
           </HeaderButton>
           <Link href="/quiz/create" style={{ marginRight: "auto" }}>

@@ -3,25 +3,25 @@ import styled from "styled-components";
 const StyledButton = styled.button`
   border: none;
   border-radius: 5px;
-  
+
   width: ${({ width }) => width || "100%"};
   height: ${({ height }) => height || "auto"};
 
   padding: ${({ padding }) => padding || "10px"};
-  
+
   letter-spacing: 1px;
   font-size: 1em;
 
   border: 1px solid transparent;
-  background: ${({color}) => color  || 'black'};
+  background: ${({ color }) => color || "black"};
   color: white;
 
-
-  ${({gradient}) => {
-    gradient ? `-webkit-background-clip: text;  
-    background-clip: text;` :''
+  ${({ gradient }) => {
+    gradient
+      ? `-webkit-background-clip: text;  
+    background-clip: text;`
+      : "";
   }}
-
 
   font-style: normal;
   font-size: 12px;
@@ -44,5 +44,6 @@ const StyledButton = styled.button`
 `;
 
 export default function Button(props) {
-  return <StyledButton {...props} />;
+  const Component = props.tag || "button";
+  return <StyledButton {...props} as={Component} />;
 }
