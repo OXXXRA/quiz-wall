@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from "@nestjs/mongoose";
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { databaseProviders } from "./database.provider";
 
 @Module({
   imports: [
@@ -18,6 +20,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         synchronize: true,
       }),
     }),
+    MongooseModule.forRoot('mongodb://localhost/nest')
   ],
+  providers: [...databaseProviders],
+  exports: [...databaseProviders],
 })
-export class DatabaseModule {}
+export class DatabaseModule { }
