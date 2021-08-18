@@ -1,9 +1,15 @@
+@import "spacing.scss";
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,800;1,400&display=swap");
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: "Open Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -27,18 +33,6 @@ a {
   box-sizing: border-box;
 }
 
-.mb-1 {
-  margin-bottom: 10px;
-}
-
-.p-1 {
-  padding: 10px;
-}
-
-.mr-1 {
-  margin-right: 10px;
-}
-
 .d-flex {
   display: flex;
 }
@@ -49,4 +43,9 @@ a {
 
 .justify-center {
   justify-content: center;
+}
+input,
+textarea {
+  font-size: 14px;
+  font-family: inherit;
 }

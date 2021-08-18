@@ -56,7 +56,7 @@ const Header = () => {
           >
             <LogOut />
           </HeaderButton>
-          <Link href="/quiz/create" style={{ marginRight: "auto" }}>
+          <Link href="/record/create" style={{ marginRight: "auto" }}>
             <HeaderButton color="#2AE78D">
               <Plus />
             </HeaderButton>

@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+const TYPES = {
+  primary: "",
+  success: "linear-gradient(90deg, #06F62C 0%, #2AE78D 100%)",
+};
+
 const StyledButton = styled.button`
   border: none;
   border-radius: 5px;
@@ -13,7 +18,7 @@ const StyledButton = styled.button`
   font-size: 1em;
 
   border: 1px solid transparent;
-  background: ${({ color }) => color || "black"};
+  background: ${({ color, type }) => TYPES[type] || color || "black"};
   color: white;
 
   ${({ gradient }) => {
