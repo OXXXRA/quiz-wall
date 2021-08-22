@@ -29,7 +29,12 @@ const QuizForm = () => {
   return (
     <>
       <div className="d-flex mb-20">
-        <Input {...name} className="mr-10" placeholder="Название вопроса" />
+        <Input
+          {...name}
+          className="mr-10"
+          placeholder="Название вопроса"
+          autoFocus
+        />
 
         <Button type="primary" style={{ width: "100px" }}>
           Дальше

@@ -12,7 +12,12 @@ const PostForm = () => {
 
   return (
     <>
-      <Input {...name} className="mb-10" placeholder="Название записи" />
+      <Input
+        {...name}
+        className="mb-10"
+        placeholder="Название записи"
+        autoFocus
+      />
       <Textarea
         {...body}
         className="mb-10"

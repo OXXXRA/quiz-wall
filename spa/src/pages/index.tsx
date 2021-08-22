@@ -1,7 +1,9 @@
+import Feed from "../modules/Feed";
+
 export default function Home() {
   return (
-    <div className="container">
-      <h1>Click</h1>
+    <div className="container pt-20">
+      <Feed />
     </div>
   );
 }
