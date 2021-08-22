@@ -51,7 +51,7 @@ const Header = () => {
           <HeaderButton
             tag={Link}
             href="/login"
-            className="mr-1"
+            className="mr-10"
             color="transparent"
           >
             <LogOut />

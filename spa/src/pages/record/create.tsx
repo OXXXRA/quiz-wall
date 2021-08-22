@@ -1,6 +1,7 @@
 import { default as React, useState } from "react";
 import styled from "styled-components";
 import PostForm from "../../modules/Record/components/PostForm";
+import QuizForm from "../../modules/Record/components/QuizForm";
 import { Card } from "../../ui";
 
 interface Props {}
@@ -30,11 +31,9 @@ const TypeRadio = styled.div`
   background: ${({ active }) =>
     active ? "linear-gradient(180deg, #bb6be7 0%, #e83fb5 100%);" : "white"};
 
-  border: 2px solid #ffffffff;
-
   cursor: pointer;
 
-  border-color: ${({ active }) => (active ? "#ffffffff" : "#BB6BE7;")};
+  border-color: ${({ active }) => (active ? "" : "#BB6BE7;")};
 
   border-radius: 5px;
 
@@ -57,11 +56,7 @@ const CreateQuiz = (props: Props) => {
     <div className="container" style={{ marginTop: 20 }}>
       <Card className="p-10">
         <h1 className="mt-0 mb-1">Создание записи</h1>
-        <TypeRadioGroup
-          name="setYAxis"
-          onClickRadioButton={(value) => setType(value)}
-          selectedValue={type}
-        >
+        <TypeRadioGroup>
           {Object.values(RECORD_TYPES).map((key) => (
             <TypeRadio
               onClick={() => setType(key)}
@@ -74,6 +69,7 @@ const CreateQuiz = (props: Props) => {
         </TypeRadioGroup>
 
         {type === RECORD_TYPES.POST && <PostForm />}
+        {type === RECORD_TYPES.QUIZ && <QuizForm />}
       </Card>
     </div>
   );

@@ -24,10 +24,10 @@ const login = () => {
         }}
       >
         <h1>Quiz Wall</h1>
-        <Input className="mb-1" type="text" placeholder="Логин" />
-        <Input className="mb-1" type="text" placeholder="Email" />
-        <Input className="mb-1" type="text" placeholder="Пароль" />
-        <Button className="mb-1">Создать пользователя</Button>
+        <Input className="mb-10" type="text" placeholder="Логин" />
+        <Input className="mb-10" type="text" placeholder="Email" />
+        <Input className="mb-10" type="text" placeholder="Пароль" />
+        <Button className="mb-10">Создать пользователя</Button>
         <Link href="/login">Войти</Link>| Забыли пароль?
       </Card>
     </Container>

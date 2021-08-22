@@ -20,7 +20,7 @@ const QuizVariants = () => {
       className="d-flex align-center"
       key={index}
     >
-      <input style={{ marginRight: 20 }} type="checkbox" />
+      <input style={{ marginRight: 20 }} type="Checkbox" />
 
       <Input style={{ marginRight: 20 }} placeholder={variant.name}></Input>
       <Button padding={"auto"} width={"30px"} height={"30px"}>

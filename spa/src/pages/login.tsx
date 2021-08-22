@@ -17,17 +17,19 @@ const login = () => {
     <Container>
       <Card
         style={{
-          textAlign: "center",
-          width: 400,
+          width: 300,
           paddingRight: 20,
           paddingLeft: 20,
         }}
       >
-        <h1>Quiz Wall</h1>
-        <Input className="mb-1" type="text" placeholder="Логин" />
-        <Input className="mb-1" type="text" placeholder="Пароль" />
-        <Button className="mb-1">Войти</Button>
-        <Link href="/register">Регистраця</Link>| Забыли пароль?
+        <h1 className="text-center">Quiz Wall</h1>
+        <Input className="mb-10" type="text" placeholder="Логин" />
+        <Link href="/">Не помню</Link>
+        {/* <Input className="mb-10" type="text" placeholder="Пароль" /> */}
+        <Button className="mt-10 mb-10">Войти</Button>
+        <Button type="success" className="mb-10">
+          Создать
+        </Button>
       </Card>
     </Container>
   );
