@@ -1,5 +1,8 @@
 export class CreateUserDto {
+  relation: string;
   email: string;
   password: string;
-  login: string;
+  username: string;
+  is_public: Boolean;
+
 }
