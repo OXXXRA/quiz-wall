@@ -1,10 +1,6 @@
 export class CreatePostDto {
-  body: string;
-  name: string;
-
-  created_at: Date;
-  owner_id: number;
-  likes: number;
+  content: string;
+  title: string;
 }
 
 export default CreatePostDto;
