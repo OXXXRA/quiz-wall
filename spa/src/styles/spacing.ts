@@ -4,7 +4,7 @@
   m-1 -> { margin: 10px }
   mb-1 -> { margin-bottom: 10px }
   pb-4 -> { padding-bottom: 40px }
-  
+
 */
 
 const sides = [
@@ -39,6 +39,7 @@ const generateSpacings = () => {
       .m-${space}{
         margin: ${space * 10}px;
       }
+
       .p-${space}{
         padding: ${space * 10}px;
       }

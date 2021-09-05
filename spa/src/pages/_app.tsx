@@ -2,9 +2,8 @@ import App from "next/app";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import Main from "../layouts/Main";
-import GlobalStyle from "../styles/global";
-import "../styles/globals.scss";
 import theme from "../styles/theme";
+import GlobalStyle from "../styles/_index";
 class MyApp extends App<any> {
   static async getInitialProps({ Component, ctx }) {
     const pageProps = Component.getInitialProps
