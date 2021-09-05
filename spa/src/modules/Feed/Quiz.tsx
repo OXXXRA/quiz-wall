@@ -5,7 +5,6 @@ const Quiz = ({ variants = [], name }) => {
   return (
     <Card className="mb-20">
       <p className="question-text mt-40 mb-40">{name}</p>
-
       {variants.map(({ id, name }) => (
         <div key={id} className="mb-10 answer-block">
           <div className="answer-rating"></div>
@@ -21,7 +20,6 @@ const Quiz = ({ variants = [], name }) => {
           </div>
         </div>
       ))}
-
       <div className="counts-container">
         <button className="btn-vote btn-none">Голосовать</button>
         <div className="counts-group">

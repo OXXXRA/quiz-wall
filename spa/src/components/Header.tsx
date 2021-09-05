@@ -10,7 +10,7 @@ const StyledHeader = styled.div`
   padding: 10px 0;
 
   box-shadow: 1px 1px 3px #747474;
-  background: #729dfe;
+  background: ${({ theme }) => theme.colors.primary.main};
   position: sticky;
   top: 0;
 

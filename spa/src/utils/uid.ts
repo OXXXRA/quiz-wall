@@ -1,5 +1,5 @@
 export default function uid(): string {
-  return Math.random().toString(16)
+  return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }
 
 
