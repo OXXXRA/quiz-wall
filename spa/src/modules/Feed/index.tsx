@@ -10,12 +10,15 @@ const RECORD_TYPE = {
 
 const mocks = [
   {
+    id: uid(),
     type: RECORD_TYPE.POST,
     name: "Знаеете ли вы об этом",
     body: `Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.`,
   },
 
   {
+    id: uid(),
+
     type: RECORD_TYPE.QUIS,
     settings: {
       is_anonimus: true,
@@ -38,6 +41,8 @@ const mocks = [
     ],
   },
   {
+    id: uid(),
+
     type: RECORD_TYPE.QUIS,
     settings: {
       is_anonimus: true,
@@ -60,6 +65,8 @@ const mocks = [
     ],
   },
   {
+    id: uid(),
+
     type: RECORD_TYPE.TESTING,
     name: "Что нужно делать чтобы быть счастливым?",
     start_at: new Date(),
@@ -67,9 +74,9 @@ const mocks = [
 ];
 
 const Feed = () => {
-  return mocks.map((record) => {
+  return mocks.map((record: any) => {
     if (record.type === RECORD_TYPE.QUIS) {
-      return <Quiz {...record} />;
+      return <Quiz key={record.id} {...record} />;
     }
 
     return null;
