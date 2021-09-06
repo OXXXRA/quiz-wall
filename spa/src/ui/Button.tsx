@@ -14,6 +14,7 @@ interface IButton {
 }
 
 const StyledButton = styled.button<IButton>`
+  padding: 10px;
   border: none;
   border-radius: 5px;
 
@@ -58,7 +59,7 @@ const StyledButton = styled.button<IButton>`
 
 const Button = (props) => {
   const Component = props.tag || "button";
-  return <StyledButton className="p-1" {...props} as={Component} />;
+  return <StyledButton {...props} as={Component} />;
 };
 
 export default Button;

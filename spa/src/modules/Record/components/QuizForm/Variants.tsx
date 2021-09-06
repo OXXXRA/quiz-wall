@@ -76,7 +76,7 @@ const Variants = () => {
   return (
     <>
       {variants.map(({ id, name, is_correct }, index) => (
-        <Variant className="d-flex mb-10" key={id}>
+        <Variant className="d-flex mb-1" key={id}>
           <VariantInput
             value={name}
             onChange={({ target: { value } }) => changeName(id, value)}
@@ -101,7 +101,7 @@ const Variants = () => {
         </Variant>
       ))}
 
-      <AddVariant onClick={() => createVariant()} className="mb-20">
+      <AddVariant onClick={() => createVariant()} className="mb-2">
         Добавить вариант +{" "}
       </AddVariant>
     </>

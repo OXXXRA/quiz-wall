@@ -3,10 +3,10 @@ import { Card, Checkbox } from "../../ui";
 
 const Quiz = ({ variants = [], name }) => {
   return (
-    <Card className="mb-20">
+    <Card className="mb-2">
       <p className="question-text mt-40 mb-40">{name}</p>
       {variants.map(({ id, name }) => (
-        <div key={id} className="mb-10 answer-block">
+        <div key={id} className="mb-1 answer-block">
           <div className="answer-rating"></div>
 
           <div className="answer-text-block">

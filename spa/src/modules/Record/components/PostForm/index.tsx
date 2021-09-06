@@ -14,13 +14,13 @@ const PostForm = () => {
     <>
       <Input
         {...name}
-        className="mb-10"
+        className="mb-1"
         placeholder="Название записи"
         autoFocus
       />
       <Textarea
         {...body}
-        className="mb-10"
+        className="mb-1"
         rows="7"
         placeholder="Описание записи"
       />

@@ -28,10 +28,10 @@ const QuizForm = () => {
 
   return (
     <>
-      <div className="d-flex mb-20">
+      <div className="d-flex mb-2">
         <Input
           {...name}
-          className="mr-10"
+          className="mr-1"
           placeholder="Название вопроса"
           autoFocus
         />
@@ -42,7 +42,7 @@ const QuizForm = () => {
       </div>
 
       <p>Настройка опроса</p>
-      <div className="d-flex flex-wrap mb-20" style={{ gap: 10 }}>
+      <div className="d-flex flex-wrap mb-2" style={{ gap: 10 }}>
         {Object.keys(OPTIONS_TEXT).map((key) => (
           <Checkbox
             active={options.includes(key)}
