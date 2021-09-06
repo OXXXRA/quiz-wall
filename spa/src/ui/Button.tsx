@@ -19,7 +19,7 @@ const StyledButton = styled.button`
 
   border: 1px solid transparent;
   background: ${({ color, type }) => TYPES[type] || color || "black"};
-  color: white;
+  color: ${({ colorFont }) => colorFont || "white"};
 
   ${({ gradient }) => {
     gradient
