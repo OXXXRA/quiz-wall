@@ -8,8 +8,9 @@ const TYPES = {
 };
 
 interface IButton {
-  flat: boolean;
-  color: string;
+  flat?: boolean;
+  fab?: boolean;
+  color?: string;
 }
 
 const StyledButton = styled.button<IButton>`
