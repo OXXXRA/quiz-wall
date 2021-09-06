@@ -1,6 +1,5 @@
-import { DefaultTheme } from 'styled-components';
 
-const theme: DefaultTheme = {
+const theme = {
   radius: '5px',
 
   opacity: '0.5',
@@ -12,7 +11,7 @@ const theme: DefaultTheme = {
 
   colors: {
     primary: {
-      light: '#4E68EF',
+      light: '#EAEEFF',
       main: "#4E68EF"
     },
     dark: "#000000",

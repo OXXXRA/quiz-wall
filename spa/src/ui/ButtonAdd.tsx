@@ -58,7 +58,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function Button(props) {
+export default function ButtonAdd(props) {
   const Component = props.tag || "button";
   return <StyledButton {...props} as={Component} />;
 }
