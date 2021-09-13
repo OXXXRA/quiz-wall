@@ -1,44 +1,27 @@
 import styled from "styled-components";
 import theme from "../styles/theme";
 
-const TYPES = {
-  primary: theme.colors.primary.main,
-  success: theme.colors.success,
-  error: theme.colors.error,
-};
 
-interface IButton {
-  flat?: boolean;
-  fab?: boolean;
-  color?: string;
-}
-
-const StyledButton = styled.button<IButton>`
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-
-  letter-spacing: 1px;
-  font-size: 1em;
-
-  border: 1px solid transparent;
-  background: ${({ color }) => TYPES[color] || color || "black"};
-  color: white;
-
-  ${({ flat, theme }) =>
-    flat &&
-    `
-    background:${theme.colors.primary.light};
-    color:${theme.colors.primary.main};
-  `}
-
-  font-size: 12px;
-
-  font-weight: bold;
-
+const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: ${({ square, round, sizeRect, width }) => 
+                (square || round) ? (square || round) : 
+                      sizeRect ? theme.sizeRect[sizeRect].width : 
+                                                      width || "100%"};
+  height: ${({ square, round, sizeRect, height }) => 
+                (square || round) ? (square || round) : 
+                      sizeRect ? theme.sizeRect[sizeRect].height : 
+                                                      height || "100%"};
+ 
+  border: ${({ borders }) => borders ? `1px solid #4E68EF` : `none`};
+  border-radius: ${({ round }) => round ? `50%` : '5px'};
+  background: ${({ colors }) => colors ? theme.colors[colors].background : 'black'};
+
+  font-weight: bold;
+  color: ${({ colors }) => colors ? theme.colors[colors].color : 'white'};
 
   transition: all 0.2s;
 

@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 
 export default css`
-.w-100 {
+    .w-100 {
       width: 100%;
     }
     
@@ -15,6 +15,10 @@ export default css`
     
     .d-flex {
       display: flex;
+    }
+
+    .d-no {
+      display: none;
     }
     
     .justify-between {
