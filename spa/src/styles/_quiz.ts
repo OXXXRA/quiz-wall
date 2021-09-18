@@ -1,5 +1,6 @@
 import { css } from "styled-components";
 
+
 export default css`
 .question-text {
     font-style: normal;
@@ -99,4 +100,44 @@ export default css`
     border-radius: 5px;
   }
 
+  .btn-add, .icon {
+    position: relative;
+    aspect-ratio: 1;
+
+    z-index: 200;
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      
+    }
+
+    &::before {
+      left: 50%;
+      width: 5%;
+      height: 35%;
+      margin-left: -2.5%;
+    }
+
+    &::after {
+      top: 50%;
+      height: 5%;
+      width: 35%;
+      margin-top: -2.5%;
+    }
+  }
+
+  .btn-add {
+    &::before, &::after {
+      background: white
+    }
+  }
+
+  .icon {
+    &::before, &::after {
+      transform: rotate(45deg);
+      background:#404040
+    }
+  }
 `

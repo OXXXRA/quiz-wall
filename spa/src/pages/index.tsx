@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonAddClose, Input, EmailForm } from "../ui";
+import { Button, Input, EmailForm } from "../ui";
 
 const Index = () => {
   return (
@@ -7,18 +7,20 @@ const Index = () => {
       {/* <Feed /> */}
 
       <div>
-        <ButtonAddClose colors='greenWhite'/>
-        <ButtonAddClose colors='greyBlue' round='60px' close/>
-        <Button colors='greyBlue' sizeRect='middle'>Игнорировать</Button>
-        <Button colors='blueWhite' sizeRect='small'>Войти</Button>
-        <Button colors='greenWhite' round='150px'>Опубликовать</Button>
-        <Button colors='whiteBlue' borders sizeRect='big'>Публикация</Button>
+        <Button className='btn-add' colorsTheme='greenWhite' width='40px'></Button>
+        <Button className='btn-add' round colorsTheme='greenWhite' width='50px'></Button>
+        <Button colorsTheme='greyBlue' width='198px' ratio='5.8'>Игнорировать</Button>
         <Button>Войти</Button>
-        <Input />
+        <Button colorsTheme='greenWhite'>Опубликовать</Button>
+        <Button colorsTheme='whiteBlue' borders >Публикация</Button>
+        <Button fab width='40px'></Button>
       </div>
-      <div style={{background: 'lightgray', paddingLeft: '20px'}}>
-          <EmailForm type='error' colors='greyBlack' placeholder='exmaple@gmai.'/>
-          <EmailForm close colors='whiteBlack' placeholder='exmaple@gmai.'/>
+      <div style={{background: 'lightgray', padding: '20px', height: '400px'}}>
+          <EmailForm type='error' width='470px' placeholder='exmaple@gmai.'style={{marginBottom: '10px'}} />
+          <EmailForm icon type='error' width='470px' placeholder='exmaple@gmai.' style={{marginBottom: '10px'}} />
+          <EmailForm close colorsTheme='whiteBlack' placeholder='exmaple@gmai.'/>
+          <Input type='error' width='298px' placeholder='Поиск' style={{marginBottom: '10px'}} />
+          <Input type='error' icon width='470px' colorsTheme='whiteBlack' placeholder='exmaple@gmai.'/>
       </div>
       
 

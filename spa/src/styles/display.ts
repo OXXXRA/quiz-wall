@@ -17,7 +17,7 @@ export default css`
       display: flex;
     }
 
-    .d-no {
+    .d-none {
       display: none;
     }
     

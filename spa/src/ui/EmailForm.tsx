@@ -1,36 +1,35 @@
 import styled from "styled-components";
 import theme from "../styles/theme";
-import { Input, ButtonAddClose } from ".";
+import { Input } from ".";
 
 
-const StyledInputForm = styled.div`
+const StyledEmailForm = styled.div`
     height: 80px;
     padding-bottom: 15px;   
-    font-size: 0.75em;
 `;
 
-const InputForm = (props) => {
+const EmailForm = (props) => {
     const Component = props.tag || "div";
     return (
-        <StyledInputForm {...props} as={Component}>
-            <div>Ваш логин или email</div>
-            <Input sizeRect='inputs' type={props.type} colors={props.colors} placeholder={props.placeholder} />
-            <ButtonAddClose className={`relative ${(props.close) ? "" : "d-no"}`} 
-                    colors='whiteBlack' sizes='20px' relative
-                    style={{
-                        left: '420px',
-                        bottom: '45px'
-                     }}
-            />
-            <div className={`${(props.type==='error') ? "" : "d-no"}`} 
-                    style={{
-                        color: `${theme.colors.error}`,
-                    }}
-                >Почта уже занята
+        <StyledEmailForm {...props} as={Component}>
+
+            <div style={{fontSize: '0.8em'}}>
+                Ваш логин или email
             </div>
             
-        </StyledInputForm>
-    );
-  };
+            <Input width={props.width} icon={props.icon} type={props.type} 
+                        colorsTheme={props.colorsTheme} placeholder={props.placeholder} />
 
-export default InputForm;
+            <div className={`${(props.type==='error') ? "" : "d-none"}`} 
+                        style={{
+                                color: `${theme.colors.error}`,
+                                fontSize: '0.8em'
+                                }}>
+                Почта уже занята
+            </div>
+            
+        </StyledEmailForm>
+    )
+};
+
+export default EmailForm;

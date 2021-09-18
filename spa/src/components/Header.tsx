@@ -46,7 +46,7 @@ const Header = () => {
     <StyledHeader>
       <div className="container  d-flex">
         <Logo href="/">QUIZ</Logo>
-        <SearchInput placeholder="Поиск" />
+        <Input placeholder="Поиск" />
         <div className="d-flex">
           <HeaderButton
             tag={Link}
