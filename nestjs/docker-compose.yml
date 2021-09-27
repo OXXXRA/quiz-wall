@@ -1,0 +1,8 @@
+version: '3'
+services:
+  database:
+    image: 'postgres' # use latest official postgres version
+    ports:
+      - 5431:5432
+    env_file:
+      - .env # configure postgres
