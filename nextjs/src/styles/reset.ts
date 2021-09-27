@@ -9,6 +9,8 @@ export default css`
     padding: 0;
     margin: 0;
     font-family: "Roboto", sans-serif;
+
+    background-color: ${({ theme }) => theme.colors.primary.light}
   }
 
   body {

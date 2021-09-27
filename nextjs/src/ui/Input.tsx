@@ -33,6 +33,8 @@ const StyledIcon = styled.span`
 `;
 
 const StyledInput = styled.input<any>`
+  padding: 10px;
+  
   width: 100%;
   border: 1px solid;
   border-color: ${({ error, theme }) =>
@@ -56,6 +58,7 @@ interface Props {
   label?: string;
   error?: string | boolean | string[];
   primary?: boolean;
+  component?: string,
 }
 
 const Input: FC<Props & any> = ({
@@ -63,12 +66,15 @@ const Input: FC<Props & any> = ({
   error,
   icon,
   className,
+  component,
   ...props
 }) => {
+  const Component = component || 'input'
+
   return (
     <Wrapper>
       {label && <StyledLabel>{label}</StyledLabel>}
-      <StyledInput className={clsx("p-1 px-2", className)} {...props} />
+      <StyledInput as={Component} className={clsx(className)} {...props} />
       {error && <StyledError> {error}</StyledError>}
       {icon && <StyledIcon>{icon}</StyledIcon>}
     </Wrapper>

@@ -1,7 +1,10 @@
+import { useStore } from "effector-react";
 import React from 'react';
 import styled from "styled-components";
-import { Button } from "../../ui";
+import Link from "../Link";
 import Modal from "../Modal";
+import { $createRecordModalStore, closeCreateRecordModal } from "./create-record-modal-state";
+
 const Option = styled.div`
   min-width: 300px;
 
@@ -25,26 +28,25 @@ const Option = styled.div`
 `;
 
 const options = [
-  { text: "Быстрый опрос" },
-  { text: "Публикация" },
-  { text: "Тестирование" },
+  { link: 'create/quiz', text: "Быстрый опрос" },
+  { link: 'create/post', text: "Публикация" },
+  { link: 'create/testing', text: "Тестирование" },
 ];
 
 const AddRecordModal = (props) => {
+  const modal = useStore($createRecordModalStore)
   return (
-    <Modal title="Новая запись" {...props}>
-      {options.map((option, index) => (
-        <Option key={index} className="py-2 mb-2 text-center">
-          {option.text}
-        </Option>
+    <Modal
+      close={() => closeCreateRecordModal()}
+      open={modal} title="Новая запись" {...props}>
+      {options.map(({ link, text }, index) => (
+        <Link key={link} href={link}>
+          <Option className="py-2 mb-2 text-center">
+            {text}
+          </Option>
+        </Link>
       ))}
 
-      <div className="d-flex gap-10 justify-end">
-        <Button color="white" flat>
-          Отмена
-        </Button>
-        <Button color="success">Далее</Button>
-      </div>
     </Modal>
   )
 }
