@@ -36,16 +36,18 @@ export class PostController {
   @UseGuards(OptionalUserGuard)
   findOne(@Param('id') id: string, @AuthUser() user: IAuthUser) {
     console.log('user: ', user);
-    return this.postService.findOne(+id);
+    return this.postService.findOne(id);
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
-    return this.postService.update(+id, updatePostDto);
+    return this.postService.update(id, updatePostDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.postService.remove(+id);
+    return this.postService.remove(id);
   }
 }

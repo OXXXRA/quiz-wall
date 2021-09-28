@@ -8,10 +8,10 @@ import { Post } from './entities/post.entity';
 @Injectable()
 export class PostService {
   constructor(
-    @InjectRepository(Post) private readonly post: Repository<Post>,
+    @InjectRepository(Post) private readonly postRepository: Repository<Post>,
   ) {}
   async create(createPostDto: CreatePostDto, user_id: string) {
-    const newPost = await this.post.save({
+    const newPost = await this.postRepository.save({
       ...createPostDto,
       owner_id: user_id,
     });
@@ -26,18 +26,20 @@ export class PostService {
       params['owner_id'] = user_id;
     }
 
-    return this.post.find(params);
+    return this.postRepository.find(params);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} post`;
+  findOne(id: string) {
+    return this.postRepository.findOne(id);
   }
 
-  update(id: number, updatePostDto: UpdatePostDto) {
-    return `This action updates a #${id} post`;
+  async update(id: string, updatePostDto: UpdatePostDto) {
+    const post = await this.postRepository.findOne(id);
+    return this.postRepository.save({ ...post, ...updatePostDto });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} post`;
+  async remove(id: string) {
+    await this.postRepository.delete(id);
+    return { message: 'success' };
   }
 }

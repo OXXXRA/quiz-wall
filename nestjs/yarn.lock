@@ -702,7 +702,7 @@
 
 "@nestjs/typeorm@^8.0.2":
   version "8.0.2"
-  resolved "https://registry.npmjs.org/@nestjs/typeorm/-/typeorm-8.0.2.tgz"
+  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-8.0.2.tgz#8e9b8422be402e02d6addfe7c779639fbff267af"
   integrity sha512-UHn4IsRkzm22eNDir/uI+x8gmgo66EO7SxWfVOiPpeLSdrTfZHKYz6q/P9KRgYbwXs8TrywVdIbJhp+4C0tzjQ==
   dependencies:
     uuid "8.3.2"
