@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { GoogleModule } from './google/google.module';
 import { PostModule } from './post/post.module';
 import { UserModule } from './user/user.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     GoogleModule,
     PostModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -8,17 +8,19 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthUser } from '../$core/decorators/auth-user.decorator';
-import { IAuthUser } from '../$core/types/AuthUser';
 import { UserService } from '../user/user.service';
 import { AuthGuard } from './../$core/guards/jwt.guard';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
+import { MailService } from './../mail/mail.service';
+import { IAuthUser } from '../$core/types/AuthUser';
 
 @Controller('auth')
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
     private readonly userService: UserService,
+    private readonly mailService: MailService,
   ) {}
 
   @Post('register')
@@ -33,6 +35,11 @@ export class AuthController {
       id: user.id,
       email: user.email,
     });
+
+    this.mailService.sendUserConfirmation(
+      user.email,
+      Math.floor(1000 + Math.random() * 9000).toString(),
+    );
 
     return {
       user,
