@@ -42,6 +42,14 @@ export class UserService {
     return this.userRepository.findOne(id);
   }
 
+  async verifyEmail(id: string) {
+    const user = await this.userRepository.findOne(id);
+    return this.userRepository.save({
+      ...user,
+      email_confirmed_at: new Date(),
+    });
+  }
+
   update(id: string, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }

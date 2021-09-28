@@ -4,7 +4,10 @@ import {
   Controller,
   Get,
   HttpCode,
+  NotAcceptableException,
+  Param,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { AuthUser } from '../$core/decorators/auth-user.decorator';
@@ -31,15 +34,16 @@ export class AuthController {
 
     const user = await this.userService.create(dto);
 
-    const token = await this.authService.login({
-      id: user.id,
+    const payload = {
       email: user.email,
-    });
+      id: user.id,
+    };
 
-    this.mailService.sendUserConfirmation(
-      user.email,
-      Math.floor(1000 + Math.random() * 9000).toString(),
-    );
+    const token = await this.authService.login(payload);
+
+    const emailToken = await this.authService.getEmailToken(payload);
+
+    this.mailService.sendUserConfirmation(user.email, emailToken);
 
     return {
       user,
@@ -69,5 +73,13 @@ export class AuthController {
   @UseGuards(AuthGuard)
   me(@AuthUser() user: IAuthUser) {
     return this.userService.findUserByEmail(user.email);
+  }
+
+  @Get('confirm-email')
+  confirmEmail(@Query('token') token: string) {
+    if (!token) {
+      throw new NotAcceptableException('provide token');
+    }
+    return this.authService.validateEmailToken(token);
   }
 }
