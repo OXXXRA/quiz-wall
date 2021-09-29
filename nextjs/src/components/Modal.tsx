@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import styled from "styled-components";
 import CloseIcon from "../icons/CloseIcon";
 
@@ -62,17 +62,18 @@ const Title = styled.p`
   letter-spacing: 0.05em;
 `;
 
-
 interface IModal {
-  title?: string,
-  open?: boolean,
-  close?: () => void
+  title?: string;
+  open?: boolean;
+  close?: () => void;
 }
 
-const Modal: FC<IModal> = ({ children, title, open, close = () => { } }, ...props) => {
-
+const Modal: FC<IModal> = (
+  { children, title, open, close = () => {} },
+  ...props
+) => {
   if (!open) return null;
-  if (typeof window === "undefined") return null
+  if (typeof window === "undefined") return null;
 
   return ReactDOM.createPortal(
     <StyledModal>
@@ -81,17 +82,12 @@ const Modal: FC<IModal> = ({ children, title, open, close = () => { } }, ...prop
         <Close onClick={close}>
           <CloseIcon />
         </Close>
-        {title &&
-          <Title className="m-0 mb-2">{title}</Title>
-        }
+        {title && <Title className="m-0 mb-2">{title}</Title>}
         {children}
-
       </Content>
     </StyledModal>,
     document.getElementById("modal")
   );
-
-
 };
 
 export default Modal;

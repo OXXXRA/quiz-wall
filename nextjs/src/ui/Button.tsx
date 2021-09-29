@@ -23,6 +23,7 @@ const StyledButton = styled.button<IButton>`
   border-radius: 5px;
   border: 0.1px solid transparent;
   background: ${({ color }) => TYPES[color] || color || "black"};
+  
   width: ${({ width }) => width || "auto"};
   height: ${({ height }) => height || "auto"};
 
@@ -37,10 +38,13 @@ const StyledButton = styled.button<IButton>`
   ${({ flat, theme, color }) =>
     flat &&
     `
-    background: ${
-      color === "white" ? theme.colors.white : theme.colors.primary.light
+    background: ${color === "white" ? theme.colors.white : theme.colors.primary.light
     };
     color: ${theme.colors.primary.main};
+  `}
+
+  ${({ width, height }) => (width || height) && `
+    padding:0px !important;
   `}
 
   font-size: 14px;
@@ -48,6 +52,7 @@ const StyledButton = styled.button<IButton>`
   letter-spacing: 0.05em;
   font-weight: bold;
   transition: all 0.2s;
+
   &:hover {
     cursor: pointer;
     opacity: 0.7;

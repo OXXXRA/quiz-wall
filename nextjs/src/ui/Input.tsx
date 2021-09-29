@@ -72,9 +72,9 @@ const Input: FC<Props & any> = ({
   const Component = component || 'input'
 
   return (
-    <Wrapper>
+    <Wrapper className={clsx(className)}>
       {label && <StyledLabel>{label}</StyledLabel>}
-      <StyledInput as={Component} className={clsx(className)} {...props} />
+      <StyledInput as={Component}  {...props} />
       {error && <StyledError> {error}</StyledError>}
       {icon && <StyledIcon>{icon}</StyledIcon>}
     </Wrapper>
