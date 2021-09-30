@@ -23,7 +23,7 @@ const StyledButton = styled.button<IButton>`
   border-radius: 5px;
   border: 0.1px solid transparent;
   background: ${({ color }) => TYPES[color] || color || "black"};
-  
+
   width: ${({ width }) => width || "auto"};
   height: ${({ height }) => height || "auto"};
 
@@ -32,18 +32,19 @@ const StyledButton = styled.button<IButton>`
 
   border: 0.1px solid transparent;
 
-  background: ${({ color }) => TYPES[color] || color || "black"};
+  background: ${({ color }) => TYPES[color] || color || TYPES["primary"]};
   color: white;
 
   ${({ flat, theme, color }) =>
     flat &&
     `
-    background: ${color === "white" ? theme.colors.white : theme.colors.primary.light
-    };
+    background: ${color === "white" ? theme.colors.white : "transparent"};
     color: ${theme.colors.primary.main};
   `}
 
-  ${({ width, height }) => (width || height) && `
+  ${({ width, height }) =>
+    (width || height) &&
+    `
     padding:0px !important;
   `}
 

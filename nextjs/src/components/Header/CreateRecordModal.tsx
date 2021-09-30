@@ -1,9 +1,12 @@
 import { useStore } from "effector-react";
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 import Link from "../Link";
 import Modal from "../Modal";
-import { $createRecordModalStore, closeCreateRecordModal } from "./create-record-modal-state";
+import {
+  $createRecordModalStore,
+  closeCreateRecordModal,
+} from "./create-record-modal-state";
 
 const Option = styled.div`
   min-width: 300px;
@@ -28,27 +31,27 @@ const Option = styled.div`
 `;
 
 const options = [
-  { link: 'create/quiz', text: "Быстрый опрос" },
-  { link: 'create/post', text: "Публикация" },
-  { link: 'create/testing', text: "Тестирование" },
+  { link: "/quiz/create", text: "Быстрый опрос" },
+  { link: "/post/create", text: "Публикация" },
+  { link: "/testing/create", text: "Тестирование" },
 ];
 
 const AddRecordModal = (props) => {
-  const modal = useStore($createRecordModalStore)
+  const modal = useStore($createRecordModalStore);
   return (
     <Modal
       close={() => closeCreateRecordModal()}
-      open={modal} title="Новая запись" {...props}>
+      open={modal}
+      title="Новая запись"
+      {...props}
+    >
       {options.map(({ link, text }, index) => (
         <Link key={link} href={link}>
-          <Option className="py-2 mb-2 text-center">
-            {text}
-          </Option>
+          <Option className="py-2 mb-2 text-center">{text}</Option>
         </Link>
       ))}
-
     </Modal>
-  )
-}
+  );
+};
 
-export default AddRecordModal
+export default AddRecordModal;

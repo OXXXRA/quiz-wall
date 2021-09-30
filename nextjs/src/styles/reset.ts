@@ -11,6 +11,10 @@ export default css`
     font-family: "Roboto", sans-serif;
 
     background-color: ${({ theme }) => theme.colors.primary.light};
+
+    background-image: url('https://pbs.twimg.com/media/E5tJhWpXoAUDRx4.jpg');
+    background-position: center;
+    background-attachment: fixed;
   }
 
   body {

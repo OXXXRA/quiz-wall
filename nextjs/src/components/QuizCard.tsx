@@ -14,6 +14,8 @@ const QuizBody = styled.div`
 `;
 
 const Title = styled.h3`
+  margin: 0;
+  margin-bottom: 20px;
   font-size: 18px;
   line-height: 21px;
   /* identical to box height */
@@ -30,9 +32,7 @@ const QuizCard: React.FunctionComponent<IQuizCardProps> = ({ className }) => {
     <Card className={className}>
       <CardHeader className="p-2" title="Опрос" caption="12 авгруста 20:12" />
       <QuizBody>
-        <Title className="mb-2" h>
-          Что нужно делать чтобы быть счастливым?
-        </Title>
+        <Title className="mb-2">Что нужно делать чтобы быть счастливым?</Title>
 
         {[1, 3].map((_, index) => (
           <Option

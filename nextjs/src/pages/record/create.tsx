@@ -23,7 +23,7 @@ const TypeRadioGroup = styled.div`
   margin-bottom: 20px;
 `;
 
-const TypeRadio = styled.div`
+const TypeRadio = styled.div<{ active?: boolean }>`
   padding: 35px 10px 10px;
 
   flex-basis: 100%;

@@ -25,29 +25,44 @@ const StyledError = styled.span`
 `;
 
 const StyledIcon = styled.span`
-  position: absolute;
-  display: flex;
   right: 10px;
   top: 50%;
+
+  display: flex;
+
+  cursor: pointer;
+
+  position: absolute;
   transform: translateY(-50%);
 `;
 
-const StyledInput = styled.input<any>`
-  padding: 10px;
-  
-  width: 100%;
-  border: 1px solid;
-  border-color: ${({ error, theme }) =>
-    error ? theme.colors.error : "#ffffff00"};
-  outline: none;
+const InputWrapper = styled.div<any>`
+  display: flex;
+  align-items: center;
+  border: 1px solid
+    ${({ error, theme }) => (error ? theme.colors.error : "#ffffff00")};
+
   border-radius: 5px;
 
   background: ${({ primary, theme }) =>
     primary ? theme.colors.primary.light : theme.colors.white};
+`;
+
+const StyledInput = styled.input<any>`
+  width: 100%;
+
+  padding: 10px;
+
+  border: none;
+  outline: none;
+
+  color: ${({ theme }) => theme.colors.grey};
+  background: transparent;
 
   font-size: 1.3em;
   letter-spacing: 1px;
-  color: ${({ theme }) => theme.colors.grey};
+
+  resize: none;
 
   &:disabled {
     opacity: 0.7;
@@ -58,7 +73,8 @@ interface Props {
   label?: string;
   error?: string | boolean | string[];
   primary?: boolean;
-  component?: string,
+  component?: string;
+  append?: React.ReactNode;
 }
 
 const Input: FC<Props & any> = ({
@@ -67,14 +83,19 @@ const Input: FC<Props & any> = ({
   icon,
   className,
   component,
+  append,
+  primary,
   ...props
 }) => {
-  const Component = component || 'input'
+  const Component = component || "input";
 
   return (
     <Wrapper className={clsx(className)}>
       {label && <StyledLabel>{label}</StyledLabel>}
-      <StyledInput as={Component}  {...props} />
+      <InputWrapper error={error} primary={primary}>
+        {append && append}
+        <StyledInput as={Component} {...props} />
+      </InputWrapper>
       {error && <StyledError> {error}</StyledError>}
       {icon && <StyledIcon>{icon}</StyledIcon>}
     </Wrapper>
