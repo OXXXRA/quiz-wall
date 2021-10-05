@@ -8,6 +8,15 @@ import theme from "../styles/theme";
 import GlobalStyle from "../styles/_index";
 import { api } from "./../api/axios";
 import { setUser } from "./../modules/User/user-store";
+import Router from "next/router";
+import { setLoadingPage } from "./../effector/router-state";
+import PageLoader from "../components/PageLoader";
+
+//Binding events.
+Router.events.on("routeChangeStart", () => setLoadingPage(true));
+Router.events.on("routeChangeComplete", () => setLoadingPage(false));
+Router.events.on("routeChangeError", () => setLoadingPage(false));
+
 class MyApp extends App<any> {
   static async getInitialProps({ Component, ctx }) {
     const pageProps = Component.getInitialProps
@@ -50,6 +59,7 @@ class MyApp extends App<any> {
           <Layout>
             <GlobalStyle />
             <Component {...pageProps} />
+            <PageLoader />
           </Layout>
         </ThemeProvider>
       </>

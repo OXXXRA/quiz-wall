@@ -11,9 +11,9 @@ export default css`
 
     background-color: ${({ theme }) => theme.colors.primary.light};
 
-    background-image: url('https://pbs.twimg.com/media/E5tJhWpXoAUDRx4.jpg');
+    /* background-image: url('https://pbs.twimg.com/media/E5tJhWpXoAUDRx4.jpg');
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 
     overflow-x: hidden;
   }

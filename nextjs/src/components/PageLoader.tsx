@@ -1,16 +1,21 @@
+import { useStore } from "effector-react";
 import React from "react";
 import styled from "styled-components";
+import { $routerStore } from "../effector/router-state";
 
 interface Props {}
 
 const Loader = styled.div`
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
   display: inline-block;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  border: 4px solid #fff;
-  top: 50%;
+  width: 40px;
+  height: 40px;
+  border: 4px solid ${({ theme }) => theme.colors.primary.main};
+  border-radius: ${({ theme }) => theme.radius};
   animation: loader 2s infinite ease;
+
   @keyframes loader {
     0% {
       transform: rotate(0deg);
@@ -38,7 +43,7 @@ const LoaderInner = styled.div`
   vertical-align: top;
   display: inline-block;
   width: 100%;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.accent};
   animation: loader-inner 2s infinite ease-in;
 
   @keyframes loader-inner {
@@ -65,6 +70,10 @@ const LoaderInner = styled.div`
 `;
 
 const PageLoader = (props: Props) => {
+  const routerStore = useStore($routerStore);
+
+  if (!routerStore.isLoading) return null;
+
   return (
     <Loader>
       <LoaderInner></LoaderInner>

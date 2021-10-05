@@ -1,6 +1,8 @@
 import React, { FC, useState } from "react";
+import { LogOut } from "react-feather";
 import styled from "styled-components";
 import { Button, Card } from "../../ui";
+import Link from "./../../components/Link";
 
 const Avatar = styled.div`
   margin-left: 20px;
@@ -11,6 +13,15 @@ const Avatar = styled.div`
   border-radius: 50%;
 
   background: ${({ theme }) => theme.colors.accent};
+`;
+const LogoutLink = styled(Link)`
+  margin-left: auto;
+  padding-right: 5px;
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent};
+  }
 `;
 
 interface Props {}
@@ -33,6 +44,9 @@ const Profile: FC<Props> = (props) => {
         >
           <Avatar />
           <p className="m-0">Inav Dudnev</p>
+          <LogoutLink href="/auth">
+            <LogOut />
+          </LogoutLink>
         </div>
       </Card>
 
