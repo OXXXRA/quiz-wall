@@ -1,8 +1,9 @@
 import { useStore } from "effector-react";
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Link from "../Link";
 import Modal from "../Modal";
+import { useRouter } from "next/router";
 import {
   $createRecordModalStore,
   closeCreateRecordModal,
@@ -37,12 +38,18 @@ const options = [
 ];
 
 const AddRecordModal = (props) => {
+  const router = useRouter();
   const modal = useStore($createRecordModalStore);
+
+  useEffect(() => {
+    closeCreateRecordModal();
+  }, [router.pathname]);
   return (
     <Modal
       close={() => closeCreateRecordModal()}
       open={modal}
       title="Новая запись"
+      className="p-2"
       {...props}
     >
       {options.map(({ link, text }, index) => (

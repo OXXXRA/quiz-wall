@@ -1,8 +1,12 @@
 import { useStore } from "effector-react";
-import React, { useState } from "react";
+import { useRef } from "react";
+import React, { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
 import QuizCard from "../components/QuizCard";
 import { userStore } from "../modules/User/user-store";
+import Loader from "./../components/Loader";
+import { confetti } from "./../utils/runConfitti";
+import TestingCard from "../components/TestingCard";
 let data = [
   {
     title: "dolore",
@@ -40,16 +44,47 @@ let data = [
     created_at: "Sun Feb 24 2019 12:28:57 GMT+0300 (Москва, стандартное время)",
   },
 ];
+
+const testings = [
+  {
+    id: 1,
+    start_at: null,
+    end_at: null,
+    name: "Тестирование",
+    question_count: 15,
+    question_time: 12,
+  },
+  {
+    id: 2,
+    start_at: new Date(Date.now() + 1000 * 657),
+    end_at: new Date(Date.now() + 60 + 60 * 5),
+    name: "Тестирование по математике",
+    question_count: 15,
+    question_time: 12,
+  },
+  {
+    id: 3,
+    start_at: new Date(Date.now() + 12),
+    end_at: null,
+    name: "Тестирование",
+    question_count: 25,
+    question_time: null,
+  },
+];
+
 const Index = () => {
   const [open, setOpen] = useState(true);
   const user = useStore(userStore);
 
   return (
     <div className="container">
+      {testings.map((testing) => (
+        <TestingCard className="mb-2" key={testing.id} {...testing} />
+      ))}
       <QuizCard className="mb-2" />
       {data.map(({ title, body, created_at }) => (
         <PostCard
-          key={title}
+          key={title + body}
           className="mb-2 p-2"
           body={body}
           title={title}

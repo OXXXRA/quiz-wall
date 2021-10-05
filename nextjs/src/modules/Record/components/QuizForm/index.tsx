@@ -45,7 +45,7 @@ const QuizForm = () => {
       <div className="d-flex flex-wrap mb-2" style={{ gap: 10 }}>
         {Object.keys(OPTIONS_TEXT).map((key) => (
           <Checkbox
-            active={options.includes(key)}
+            checked={options.includes(key)}
             key={key}
             onClick={() => toggleOption(key)}
           >

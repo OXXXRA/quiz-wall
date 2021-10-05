@@ -85,12 +85,16 @@ const Input: FC<Props & any> = ({
   component,
   append,
   primary,
+  wrapperProps = {},
   ...props
 }) => {
   const Component = component || "input";
 
   return (
-    <Wrapper className={clsx(className)}>
+    <Wrapper
+      {...wrapperProps}
+      className={clsx(className, wrapperProps.className)}
+    >
       {label && <StyledLabel>{label}</StyledLabel>}
       <InputWrapper error={error} primary={primary}>
         {append && append}

@@ -4,7 +4,6 @@ export default css`
   * {
     box-sizing: border-box;
   }
-
   body {
     padding: 0;
     margin: 0;
@@ -15,6 +14,8 @@ export default css`
     background-image: url('https://pbs.twimg.com/media/E5tJhWpXoAUDRx4.jpg');
     background-position: center;
     background-attachment: fixed;
+
+    overflow-x: hidden;
   }
 
   body {

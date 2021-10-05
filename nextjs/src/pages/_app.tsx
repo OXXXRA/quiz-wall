@@ -15,6 +15,7 @@ class MyApp extends App<any> {
       : {};
     return { pageProps };
   }
+
   componentDidMount() {
     const token = localStorage.getItem("token");
 
@@ -25,11 +26,10 @@ class MyApp extends App<any> {
     api
       .get("/auth/me")
       .then(({ data }) => {
-        console.log("data: ", data);
         setUser(data);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        localStorage.removeItem("token");
       });
   }
 

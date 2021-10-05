@@ -2,15 +2,19 @@ import { FC } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import CloseIcon from "../icons/CloseIcon";
+import clsx from "clsx";
 
 const Content = styled.div`
   z-index: 100;
+
+  max-height: 90vh;
+  overflow-y: auto;
 
   width: fit-content;
 
   border-radius: ${({ theme }) => theme.radius};
 
-  background: ${({ theme }) => theme.colors.primary.light};
+  background-color: ${({ theme }) => theme.colors.primary.light};
 
   color: ${({ theme }) => theme.colors.grey};
 `;
@@ -66,10 +70,12 @@ interface IModal {
   title?: string;
   open?: boolean;
   close?: () => void;
+  hideClose?: boolean;
+  className?: string;
 }
 
-const Modal: FC<IModal> = (
-  { children, title, open, close = () => {} },
+const Modal: FC<IModal & any> = (
+  { children, title, open, hideClose, className, close = () => {} },
   ...props
 ) => {
   if (!open) return null;
@@ -78,10 +84,12 @@ const Modal: FC<IModal> = (
   return ReactDOM.createPortal(
     <StyledModal>
       <Blur onClick={close}></Blur>
-      <Content className="p-2 relative" {...props}>
-        <Close onClick={close}>
-          <CloseIcon />
-        </Close>
+      <Content className={clsx(className, "relative")} {...props}>
+        {!hideClose && (
+          <Close onClick={close}>
+            <CloseIcon />
+          </Close>
+        )}
         {title && <Title className="m-0 mb-2">{title}</Title>}
         {children}
       </Content>

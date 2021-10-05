@@ -23,9 +23,9 @@ export default class MyDocument extends Document {
             {initialProps.styles}
             {sheet.getStyleElement()}
             <body>
-              <div id="modal" />
               <NextScript />
             </body>
+            <div id="modal" />
           </Html>
         ),
       };

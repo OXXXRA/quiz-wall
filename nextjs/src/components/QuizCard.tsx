@@ -1,9 +1,10 @@
 import clsx from "clsx";
 import * as React from "react";
 import styled from "styled-components";
-import { Checkbox } from "../ui";
+import { Button, Checkbox } from "../ui";
 import Card from "./../ui/Card";
 import CardHeader from "./CardHeader";
+import { confetti } from "./../utils/runConfitti";
 
 const QuizBody = styled.div`
   padding: 40px;
@@ -28,6 +29,9 @@ interface IQuizCardProps {
 }
 
 const QuizCard: React.FunctionComponent<IQuizCardProps> = ({ className }) => {
+  const chooseOption = (e) => {
+    confetti(e.target);
+  };
   return (
     <Card className={className}>
       <CardHeader className="p-2" title="Опрос" caption="12 авгруста 20:12" />
@@ -44,6 +48,9 @@ const QuizCard: React.FunctionComponent<IQuizCardProps> = ({ className }) => {
             key={index}
           />
         ))}
+        <Button onClick={chooseOption} color="accent">
+          Голосовать
+        </Button>
       </QuizBody>
     </Card>
   );
@@ -93,7 +100,7 @@ const Option = ({ name, total, procent, checked, className }) => {
     <>
       <Wrapper className={clsx(className, "d-flex")}>
         <Progress procent={procent} />
-        <Checkbox active={false} className="mr-1" />
+        <Checkbox checked={false} className="mr-1" />
         <NameText className="mr-auto">
           {name}
           <TotalText>{total}</TotalText>

@@ -1,24 +1,30 @@
 import clsx from "clsx";
-import { FC } from "hoist-non-react-statics/node_modules/@types/react";
+import React, { FC } from "react";
 import styled from "styled-components";
+import Loader from "../components/Loader";
 import theme from "../styles/theme";
 
 const TYPES = {
   primary: theme.colors.primary.main,
   success: theme.colors.success,
   error: theme.colors.error,
+  accent: theme.colors.accent,
 };
 
 interface IButton {
   flat?: boolean;
   fab?: boolean;
   color?: string;
+  height?: any;
+  width?: any;
 }
 
 const StyledButton = styled.button<IButton>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  position: relative;
   border: none;
   border-radius: 5px;
   border: 0.1px solid transparent;
@@ -35,11 +41,11 @@ const StyledButton = styled.button<IButton>`
   background: ${({ color }) => TYPES[color] || color || TYPES["primary"]};
   color: white;
 
-  ${({ flat, theme, color }) =>
+  ${({ flat, color, theme }) =>
     flat &&
     `
-    background: ${color === "white" ? theme.colors.white : "transparent"};
-    color: ${theme.colors.primary.main};
+    background: ${theme.colors.white} !important;
+    color: ${TYPES[color] || color || TYPES["primary"]};
   `}
 
   ${({ width, height }) =>
@@ -69,6 +75,7 @@ const Button: FC<IButton & any> = ({
   icon: Icon,
   className,
   children,
+  loading = false,
   ...props
 }) => {
   const Component = props.tag || "button";
@@ -80,6 +87,7 @@ const Button: FC<IButton & any> = ({
     >
       {Icon}
       {children}
+      {loading && <Loader />}
     </StyledButton>
   );
 };

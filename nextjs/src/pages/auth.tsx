@@ -130,7 +130,7 @@ const Auth = (props: Props) => {
 
             <div className="mb-2 d-flex justify-between">
               <Checkbox
-                active={remember}
+                checked={remember}
                 onClick={() => setRemember(!remember)}
               >
                 {" "}

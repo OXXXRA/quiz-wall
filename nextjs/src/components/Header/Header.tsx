@@ -61,7 +61,9 @@ const Header = () => {
           >
             <Plus />
           </Button>
-          <Avatar />
+          <Link href="/profile">
+            <Avatar />
+          </Link>
         </div>
       </div>
       <AddRecordModal />

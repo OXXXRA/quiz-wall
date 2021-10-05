@@ -75,6 +75,7 @@ const Variants = () => {
       });
     });
   };
+  
   return (
     <>
       {variants.map(({ id, name, is_correct }, index) => (

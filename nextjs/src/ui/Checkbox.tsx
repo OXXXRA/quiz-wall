@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Checkbox = styled.div<{ active?: boolean }>`
+const Checkbox = styled.div<{ checked?: boolean }>`
   cursor: pointer;
 
   display: flex;
@@ -22,14 +22,15 @@ const Checkbox = styled.div<{ active?: boolean }>`
 
     border-radius: 5px;
 
-    background-color: ${({ theme, active }) => active ? theme.colors.primary.main : theme.colors.primary.light};
-
+    background-color: ${({ theme, checked }) =>
+      checked ? theme.colors.primary.main : theme.colors.primary.light};
 
     transition: all 0.5s;
   }
 
-  ${({ active }) =>
-    active && `
+  ${({ checked }) =>
+    checked &&
+    `
     &::after {
       position: absolute;
       content: " ";
