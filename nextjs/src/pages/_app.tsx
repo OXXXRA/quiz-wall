@@ -28,11 +28,10 @@ class MyApp extends App<any> {
     if (process.browser) {
       const token = localStorage.getItem("token");
 
-      if (!token) return;
-
-      setToken(token);
-
-      api
+      if (token) {
+        setToken(token);
+        
+        api
         .get("/auth/me")
         .then(({ data }) => {
           setUser(data);
@@ -40,6 +39,7 @@ class MyApp extends App<any> {
         .catch(() => {
           localStorage.removeItem("token");
         });
+      }
     }
 
     return { pageProps };
