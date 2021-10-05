@@ -14,14 +14,13 @@ const divide = (date) => {
     hours,
     minutes,
     seconds,
-  }
-}
-
+  };
+};
 
 export default function useCountdown(date) {
   const timer = useRef(null);
 
-  const { days: d, hours: h, minutes: m, seconds: s } = divide(date)
+  const { days: d, hours: h, minutes: m, seconds: s } = divide(date);
 
   const [days, setDays] = useState(d);
   const [hours, setHours] = useState(h);
@@ -29,13 +28,13 @@ export default function useCountdown(date) {
   const [seconds, setSeconds] = useState(s);
   const [isFinish, setIsFinish] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     timer.current = window.setInterval(() => {
       const target = new Date(date).getTime();
       const now = new Date().getTime();
 
       if (now >= target) return setIsFinish(true);
-      const { days, hours, minutes, seconds } = divide(date)
+      const { days, hours, minutes, seconds } = divide(date);
 
       setDays(days);
       setHours(hours);

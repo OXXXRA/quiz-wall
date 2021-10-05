@@ -48,7 +48,7 @@ let data = [
 const testings = [
   {
     id: 1,
-    start_at: null,
+    start_at: new Date(Date.now() + 1000 * 5),
     end_at: null,
     name: "Тестирование",
     question_count: 15,

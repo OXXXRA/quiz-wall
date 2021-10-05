@@ -6,3 +6,8 @@ services:
       - 5431:5432
     env_file:
       - .env # configure postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+volumes:
+  data:

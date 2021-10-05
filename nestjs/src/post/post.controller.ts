@@ -11,14 +11,16 @@ import {
 import { AuthUser } from '../$core/decorators/auth-user.decorator';
 import { AuthGuard } from '../$core/guards/jwt.guard';
 import { OptionalUserGuard } from '../$core/guards/optional-user.guard';
+import { Paginate } from '../$core/pagination/paginate-decorator';
 import { IAuthUser } from '../$core/types/AuthUser';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { PostService } from './post.service';
+import { PaginateQuery } from './../$core/pagination/paginate-decorator';
 
 @Controller('post')
 export class PostController {
-  constructor(private readonly postService: PostService) {}
+  constructor(private readonly postService: PostService) { }
 
   @Post()
   @UseGuards(AuthGuard)
@@ -27,9 +29,8 @@ export class PostController {
   }
 
   @Get()
-  @UseGuards(OptionalUserGuard)
-  findAll(@AuthUser() user: IAuthUser) {
-    return this.postService.findAll(user.id);
+  public findAll(@Paginate() query: PaginateQuery) {
+    return this.postService.findAll(query);
   }
 
   @Get(':id')

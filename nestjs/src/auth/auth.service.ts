@@ -51,8 +51,8 @@ export class AuthService {
       const { id, email } = await this.jwtService.verifyAsync(token);
 
       if (!email) throw new BadRequestException('token is expired');
-
-      return await this.userService.verifyEmail(id);
+      await this.userService.verifyEmail(id);
+      return { message: 'success' };
     } catch (error) {
       throw new BadRequestException('token is invalid');
     }

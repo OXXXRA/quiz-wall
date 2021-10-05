@@ -19,27 +19,30 @@ Router.events.on("routeChangeError", () => setLoadingPage(false));
 
 class MyApp extends App<any> {
   static async getInitialProps({ Component, ctx }) {
-    const pageProps = Component.getInitialProps
-      ? await Component.getInitialProps(ctx)
-      : {};
+    let pageProps = {};
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    if (process.browser) {
+      const token = localStorage.getItem("token");
+
+      if (!token) return;
+
+      setToken(token);
+
+      api
+        .get("/auth/me")
+        .then(({ data }) => {
+          setUser(data);
+        })
+        .catch(() => {
+          localStorage.removeItem("token");
+        });
+    }
+
     return { pageProps };
-  }
-
-  componentDidMount() {
-    const token = localStorage.getItem("token");
-
-    if (!token) return;
-
-    setToken(token);
-
-    api
-      .get("/auth/me")
-      .then(({ data }) => {
-        setUser(data);
-      })
-      .catch(() => {
-        localStorage.removeItem("token");
-      });
   }
 
   render() {

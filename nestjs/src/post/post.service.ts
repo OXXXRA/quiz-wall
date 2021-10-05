@@ -4,6 +4,9 @@ import { Repository } from 'typeorm';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Post } from './entities/post.entity';
+import { query } from 'express';
+import { PaginateQuery } from './../$core/pagination/paginate-decorator';
+import { paginate } from '../$core/pagination/paginate';
 
 @Injectable()
 export class PostService {
@@ -19,14 +22,9 @@ export class PostService {
     return newPost;
   }
 
-  findAll(user_id?: string) {
-    const params = {};
-
-    if (user_id) {
-      params['owner_id'] = user_id;
-    }
-
-    return this.postRepository.find(params);
+  findAll(query: PaginateQuery) {
+    // http://localhost:3000/post?limit=5&page=2&sortBy=color:DESC&search=i&filter.age=$gte:3
+    return paginate(query, this.postRepository, { sortableColumns: ['id'] });
   }
 
   findOne(id: string) {

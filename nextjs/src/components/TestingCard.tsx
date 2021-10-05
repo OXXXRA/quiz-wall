@@ -5,7 +5,7 @@ import clsx from "clsx";
 import CardHeader from "./CardHeader";
 import { Button } from "../ui";
 import useCountdown from "./../hooks/useCountdown";
-import Link from './Link';
+import Link from "./Link";
 
 interface Props {
   id: number;
@@ -58,7 +58,7 @@ const TestingCard: FC<Props & any> = ({
   const { days, hours, minutes, seconds, isFinish } = useCountdown(start_at);
 
   const isStarted = useMemo(() => {
-    if (!start_at) return true;
+    if (!start_at || isFinish) return true;
     return start_at.getTime() < Date.now();
   }, [start_at, isFinish]);
 
