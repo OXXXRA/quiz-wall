@@ -10,7 +10,7 @@ const Variant = styled.div`
 
 const VariantInput = styled(Input)`
   padding-left: 40px;
-  
+
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 `;
@@ -24,7 +24,7 @@ const VariantCheckbox = styled<any>(Checkbox)`
 
 const VariantButton = styled(Button)`
   width: 40px;
-  
+
   aspect-ratio: 1;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -75,7 +75,7 @@ const Variants = () => {
       });
     });
   };
-  
+
   return (
     <>
       {variants.map(({ id, name, is_correct }, index) => (
@@ -103,10 +103,11 @@ const Variants = () => {
           </VariantButton>
         </Variant>
       ))}
-
-      <AddVariant onClick={() => createVariant()} className="mb-2">
-        Добавить вариант + {" "}
-      </AddVariant>
+      {variants.length < 11 && (
+        <AddVariant onClick={() => createVariant()} className="mb-2">
+          Добавить вариант +{" "}
+        </AddVariant>
+      )}
     </>
   );
 };
